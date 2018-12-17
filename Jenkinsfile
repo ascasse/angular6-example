@@ -18,6 +18,9 @@ pipeline{
         '''
       }
     }
+    //stage ('Unit tests') {
+    //  sh "npm test"
+    //}
     stage ('code quality'){
       steps{
         withSonarQubeEnv('sonarqube') {
@@ -25,4 +28,5 @@ pipeline{
         }
       }
     }
+  }
 }
