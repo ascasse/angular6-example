@@ -23,7 +23,7 @@ pipeline{
     //}
     stage ('code quality'){
       steps{
-        withSonarQubeEnv('sonarqube') {
+        withSonarQubeEnv('SonarQubeServer') {
             sh "${scannerHome}/sonar-scanner"
         }
       }
