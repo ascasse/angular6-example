@@ -21,12 +21,18 @@ pipeline{
     //stage ('Unit tests') {
     //  sh "npm test"
     //}
+    // stage ('code quality'){
+    //   steps{
+    //     withSonarQubeEnv('sonarqube') {
+    //         sh "${scannerHome}/sonar-scanner"
+    //     }
+    //   }
+    // }
     stage ('code quality'){
       steps{
-        withSonarQubeEnv('sonarqube') {
-            sh "${scannerHome}/sonar-scanner"
-        }
+        sh '$(npm bin)/ng lint'
       }
     }
+
   }
 }
