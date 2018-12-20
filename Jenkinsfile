@@ -18,9 +18,18 @@ pipeline{
         '''
       }
     }
-    //stage ('Unit tests') {
-    //  sh "npm test"
-    //}
+    stage ('test'){
+      steps{
+        sh '''
+          $(npm bin)/ng test --single-run --browsers Chrome_no_sandbox
+        '''
+      }
+      post {
+          always {
+            junit "test-results.xml"
+          }
+      }
+    }
     // stage ('code quality'){
     //   steps{
     //     withSonarQubeEnv('sonarqube') {
